@@ -4,36 +4,122 @@
  */
 package Controlador;
 
+import Modelo.Usuario;
+import Vista.VentanaCalculadora;
+import javax.swing.JOptionPane;
+
 
 public class ControladorUsuario {
     
-    // aqui vamos a tener que va hacer el usuario el tipo de operaciones 
+    //el controlador es el intemedario de lo que hace el Usuario y la vista 
     
-    public static double suma(int a, int b){
-        return a + b;
+    private String numero_1; 
+    private String numero_2;
+    private String numero_temporal = ""; 
+    private Double resultado; 
+    private String opera; 
+    static Usuario u = new Usuario();
+    
+    
+    public String obtenerNumero(String num){
+         return numero_temporal += num; // concatenamos los numeros  hasta que el usuario pueda colocar una operacion
+        
     }
     
-    public static double resta(int n1, int n2){
-        return n1 - n2;
-    } 
+    public void operacionAritmetica(String operacion){
+        //vamos a obtener el primer numero 
+        numero_1 = numero_temporal; 
+        //limpiamos el numero temporal 
+        numero_temporal = "";
+        
+        //guardamos la opeeracion en nuestro atributo 
+        opera = operacion;  
+    }
     
-    public static double division(int div1, int div2){
+    
+    public void calcularResultado(){
+        numero_2 = numero_temporal; 
+        
+        if(numero_1.isEmpty() || numero_2.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Operacion Incompleta");
+            return;  
+        }
+        
+        if(numero_1 == null || numero_2 == null){
+            JOptionPane.showMessageDialog(null, "Valores Null");
+            return;
+        }
+        
         try{
-            return div1 / div2;
+            double n1 = Double.parseDouble(numero_1);
+            double n2 = Double.parseDouble(numero_2); 
             
-        }catch(ArithmeticException e){
-            System.err.println("Erro division 0" + e);
+            switch (opera) {
+            
+            case "+":
+                resultado = u.sumar(n1, n2);
+                break;
+            case "-":
+                resultado = u.restar(n1, n2);
+                break;
+            case "*":
+                resultado = u.multiplicar(n1, n2);
+                break;
+            case "/":
+                resultado = u.dividir(n1, n2);
+                break;
+               
+        }
+        
+        numero_temporal = "";
+            
+        }catch(NullPointerException e){
             
         }
         
-        return 0000000000000000000;
+        
+       
+        
+        
+        
+    }
+
+    public void setNumero_temporal(String numero_temporal) {
+        this.numero_temporal = numero_temporal;
     }
     
     
-    public static double multplicacion(int mul1, int mul2){
-        return mul1 * mul2;
+  
+   
+    public String getNumero_1() {
+        return numero_1;
+    }
+
+    public String getNumero_2() {
+        return numero_2;
+    }
+
+    public String getNumero_temporal() {
+        return numero_temporal;
+    }
+
+    public double getResultado() {
+        return resultado;
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ 
     
     
     

@@ -4,25 +4,48 @@
  */
 package Modelo;
 
+import javax.swing.JOptionPane;
+
 
 public class Usuario {
+    //operaciones que puede hacer el usuario 
+   
     
-    // vamos a tener a un Uusario que va a tener atributo unico como nombre nada mas 
-    
-    private String usuario; 
-    
-    public Usuario(String usuario){
-        this.usuario = usuario; 
-    }
+    public double sumar(double a, double b){
 
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+        return a + b; 
     }
     
+    public double restar(double c, double d){
+        return c - d; 
+    }
+    
+    public double multiplicar(double e, double f){
+        return e*f; 
+    }
+    
+    public double dividir(double g, double h){
+       try{
+           
+           if (h == 0) {  // verificamos antes de dividir
+            JOptionPane.showMessageDialog(null, "Error: División entre 0");
+            return 0;  // o cualquier valor que indique error
+        }
+        return g / h;  // si no es cero, hacemos la división
+           
+       }catch(ArithmeticException e){
+           JOptionPane.showMessageDialog(null, "Erro Division entre 0");
+           return 0000000000000000000000000000000000000000000000;
+           
+       }
+      
+       
+    }
+    
+    
+    
+    
+   
     
     
     

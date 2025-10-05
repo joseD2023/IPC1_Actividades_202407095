@@ -4,17 +4,19 @@
  */
 package Vista;
 
-/**
- *
- * @author Admin
- */
-public class VentanaCalculadora extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VentanaCalculadora
-     */
+import Controlador.ControladorUsuario;
+import javax.swing.JOptionPane;
+public class VentanaCalculadora extends javax.swing.JFrame {
+    
+    static ControladorUsuario controlar = new ControladorUsuario();
+    
+
+  
     public VentanaCalculadora() {
         initComponents();
+        
+        
     }
 
     /**
@@ -45,7 +47,9 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         boton_resultado = new javax.swing.JButton();
         boton_limpiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        mostrar_operacion = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,10 +58,20 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         boton_dividir.setBackground(new java.awt.Color(204, 204, 204));
         boton_dividir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         boton_dividir.setText("/");
+        boton_dividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_dividirActionPerformed(evt);
+            }
+        });
 
         boton_multiplicar.setBackground(new java.awt.Color(204, 204, 204));
         boton_multiplicar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         boton_multiplicar.setText("x");
+        boton_multiplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_multiplicarActionPerformed(evt);
+            }
+        });
 
         boton_restar.setBackground(new java.awt.Color(204, 204, 204));
         boton_restar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -71,36 +85,71 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         boton_sumar.setBackground(new java.awt.Color(204, 204, 204));
         boton_sumar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         boton_sumar.setText("+");
+        boton_sumar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_sumarActionPerformed(evt);
+            }
+        });
 
         boton_7.setBackground(new java.awt.Color(102, 102, 102));
         boton_7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         boton_7.setForeground(new java.awt.Color(255, 255, 255));
         boton_7.setText("7");
+        boton_7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_7ActionPerformed(evt);
+            }
+        });
 
         boton_8.setBackground(new java.awt.Color(102, 102, 102));
         boton_8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boton_8.setForeground(new java.awt.Color(255, 255, 255));
         boton_8.setText("8");
+        boton_8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_8ActionPerformed(evt);
+            }
+        });
 
         boton_9.setBackground(new java.awt.Color(102, 102, 102));
         boton_9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boton_9.setForeground(new java.awt.Color(255, 255, 255));
         boton_9.setText("9");
+        boton_9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_9ActionPerformed(evt);
+            }
+        });
 
         boton_4.setBackground(new java.awt.Color(102, 102, 102));
         boton_4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boton_4.setForeground(new java.awt.Color(255, 255, 255));
         boton_4.setText("4");
+        boton_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_4ActionPerformed(evt);
+            }
+        });
 
         boton_5.setBackground(new java.awt.Color(102, 102, 102));
         boton_5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boton_5.setForeground(new java.awt.Color(255, 255, 255));
         boton_5.setText("5");
+        boton_5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_5ActionPerformed(evt);
+            }
+        });
 
         boton_6.setBackground(new java.awt.Color(102, 102, 102));
         boton_6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boton_6.setForeground(new java.awt.Color(255, 255, 255));
         boton_6.setText("6");
+        boton_6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_6ActionPerformed(evt);
+            }
+        });
 
         boton_1.setBackground(new java.awt.Color(102, 102, 102));
         boton_1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -116,16 +165,31 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         boton_2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boton_2.setForeground(new java.awt.Color(255, 255, 255));
         boton_2.setText("2");
+        boton_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_2ActionPerformed(evt);
+            }
+        });
 
         boton_3.setBackground(new java.awt.Color(102, 102, 102));
         boton_3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boton_3.setForeground(new java.awt.Color(255, 255, 255));
         boton_3.setText("3");
+        boton_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_3ActionPerformed(evt);
+            }
+        });
 
         boton_0.setBackground(new java.awt.Color(102, 102, 102));
         boton_0.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boton_0.setForeground(new java.awt.Color(255, 255, 255));
         boton_0.setText("0");
+        boton_0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_0ActionPerformed(evt);
+            }
+        });
 
         boton_punto.setBackground(new java.awt.Color(102, 102, 102));
         boton_punto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -140,6 +204,11 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         boton_resultado.setBackground(new java.awt.Color(255, 153, 0));
         boton_resultado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         boton_resultado.setText("=");
+        boton_resultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_resultadoActionPerformed(evt);
+            }
+        });
 
         boton_limpiar.setBackground(new java.awt.Color(102, 102, 102));
         boton_limpiar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -155,12 +224,15 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField1)
+            .addComponent(mostrar_operacion)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+            .addComponent(mostrar_operacion, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
         );
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Calculadora fx-991LA USAC");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,11 +274,17 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                             .addComponent(boton_resultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(boton_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(3, 3, 3)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -243,6 +321,13 @@ public class VentanaCalculadora extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -250,14 +335,20 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
@@ -265,19 +356,191 @@ public class VentanaCalculadora extends javax.swing.JFrame {
 
     private void boton_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_1ActionPerformed
         // TODO add your handling code here:
+        
+        String numero1 = "1";
+        
+        mostrar_operacion.setText(mostrar_operacion.getText() + numero1);
+        controlar.obtenerNumero(numero1);
     }//GEN-LAST:event_boton_1ActionPerformed
 
     private void boton_puntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_puntoActionPerformed
         // TODO add your handling code here:
+        String numeropunto = ".";
+        
+        mostrar_operacion.setText(mostrar_operacion.getText() + numeropunto); // obtiene el texto original  y lo concatena con el nuevo
+        controlar.obtenerNumero(numeropunto);
+        
     }//GEN-LAST:event_boton_puntoActionPerformed
 
     private void boton_restarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_restarActionPerformed
         // TODO add your handling code here:
+        
+        String menos = "-";
+        
+        if(controlar.getNumero_temporal().isEmpty()){
+            controlar.obtenerNumero(menos);
+            // en este caso como esta vacio entonces si lo esta entonces agrega y lo concatena pero si ya tiene entonces no 
+            
+        }else{
+            controlar.operacionAritmetica(menos);
+            
+        }
+        
+        mostrar_operacion.setText(mostrar_operacion.getText() + menos);
+        
+        
+        
     }//GEN-LAST:event_boton_restarActionPerformed
 
     private void boton_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_limpiarActionPerformed
         // TODO add your handling code here:
+        //vamos a limpiar el numero temporal 
+        controlar.setNumero_temporal(""); 
+         mostrar_operacion.setText("");
+        
+        
     }//GEN-LAST:event_boton_limpiarActionPerformed
+
+    private void boton_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_7ActionPerformed
+        // TODO add your handling code here:
+        
+        String numero7 = "7";
+        mostrar_operacion.setText(mostrar_operacion.getText() + numero7);
+        controlar.obtenerNumero(numero7);
+        
+       
+        
+        
+        
+        
+    }//GEN-LAST:event_boton_7ActionPerformed
+
+    private void boton_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_8ActionPerformed
+        // TODO add your handling code here:
+        
+        String numero8 = "8";
+        mostrar_operacion.setText(mostrar_operacion.getText() + numero8);
+        controlar.obtenerNumero(numero8);
+        
+        
+        
+    }//GEN-LAST:event_boton_8ActionPerformed
+
+    private void boton_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_9ActionPerformed
+        // TODO add your handling code here:
+        
+        String numero9 = "9";
+        mostrar_operacion.setText(mostrar_operacion.getText() + numero9);
+        controlar.obtenerNumero(numero9);
+    }//GEN-LAST:event_boton_9ActionPerformed
+
+    private void boton_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_4ActionPerformed
+        // TODO add your handling code here:
+        
+        String numero4 = "4";
+        mostrar_operacion.setText(mostrar_operacion.getText() + numero4);
+        controlar.obtenerNumero(numero4);
+        
+        
+        
+    }//GEN-LAST:event_boton_4ActionPerformed
+
+    private void boton_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_5ActionPerformed
+        // TODO add your handling code here:
+        
+        String numero5 = "5";
+        mostrar_operacion.setText(mostrar_operacion.getText()+numero5);
+        controlar.obtenerNumero(numero5);
+    }//GEN-LAST:event_boton_5ActionPerformed
+
+    private void boton_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_6ActionPerformed
+        // TODO add your handling code here:
+        String numero6 = "6";
+        mostrar_operacion.setText(mostrar_operacion.getText()+numero6);
+        controlar.obtenerNumero(numero6);
+    }//GEN-LAST:event_boton_6ActionPerformed
+
+    private void boton_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_2ActionPerformed
+        // TODO add your handling code here:
+        
+        String numero2 ="2";
+        mostrar_operacion.setText(mostrar_operacion.getText()+numero2);
+        controlar.obtenerNumero(numero2);
+    }//GEN-LAST:event_boton_2ActionPerformed
+
+    private void boton_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_3ActionPerformed
+        // TODO add your handling code here:
+        
+        String numero3 ="3";
+        mostrar_operacion.setText(mostrar_operacion.getText()+numero3);
+        controlar.obtenerNumero(numero3);
+    }//GEN-LAST:event_boton_3ActionPerformed
+
+    private void boton_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_0ActionPerformed
+        // TODO add your handling code here:
+        
+        String numero0 ="0";
+        mostrar_operacion.setText(mostrar_operacion.getText()+numero0);
+        controlar.obtenerNumero(numero0);
+    }//GEN-LAST:event_boton_0ActionPerformed
+
+    private void boton_resultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_resultadoActionPerformed
+        // TODO add your handling code here:
+        
+        //vamos a intentar ver los numero concatenados en la pantalla de settext() del textfield 
+        
+        //vamos hacer el metodo calculos del metodo para inicializarlo 
+        
+        
+        controlar.calcularResultado(); // con esto inicializamos elmetodo para calcular 
+        if(controlar.getNumero_1()== null || controlar.getNumero_2() == null){
+            JOptionPane.showMessageDialog(null, "Verifique si no hay algun dato faltante");
+            return;
+            
+        }
+        
+        if(Double.toString(controlar.getResultado()) == null){
+            JOptionPane.showMessageDialog(null, "No se pudo calcular el resultado");
+            return;
+        }
+        
+        
+        mostrar_operacion.setText(Double.toString(controlar.getResultado()));
+        
+        
+       
+    }//GEN-LAST:event_boton_resultadoActionPerformed
+
+    private void boton_sumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_sumarActionPerformed
+        // TODO add your handling code here:
+        
+        String suma = "+";
+        mostrar_operacion.setText(mostrar_operacion.getText()+suma);
+        controlar.operacionAritmetica(suma);
+    }//GEN-LAST:event_boton_sumarActionPerformed
+
+    private void boton_multiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_multiplicarActionPerformed
+        // TODO add your handling code here:
+        
+        String multiplicacion = "*";
+        mostrar_operacion.setText(mostrar_operacion.getText()+multiplicacion);
+        controlar.operacionAritmetica(multiplicacion);
+    }//GEN-LAST:event_boton_multiplicarActionPerformed
+
+    private void boton_dividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_dividirActionPerformed
+        // TODO add your handling code here:
+        
+        String Division = "/";
+        mostrar_operacion.setText(mostrar_operacion.getText()+Division);
+        controlar.operacionAritmetica(Division);
+    }//GEN-LAST:event_boton_dividirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,8 +595,10 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     private javax.swing.JButton boton_restar;
     private javax.swing.JButton boton_resultado;
     private javax.swing.JButton boton_sumar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField mostrar_operacion;
     // End of variables declaration//GEN-END:variables
 }
