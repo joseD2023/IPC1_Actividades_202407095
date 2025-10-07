@@ -6,6 +6,7 @@ package Vista;
 
 
 import Controlador.ControladorUsuario;
+import Modelo.Usuario;
 import javax.swing.JOptionPane;
 public class VentanaCalculadora extends javax.swing.JFrame {
     
@@ -504,8 +505,10 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             return;
         }
         
+        Usuario usuario = new Usuario("Jose De La Rosa");
         
         mostrar_operacion.setText(Double.toString(controlar.getResultado()));
+        JOptionPane.showMessageDialog(null, "Usuario: " + " " + usuario.getNombre());
         
         
        

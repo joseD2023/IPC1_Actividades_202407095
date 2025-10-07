@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Modelo.Calculadora;
 import Modelo.Usuario;
 import Vista.VentanaCalculadora;
 import javax.swing.JOptionPane;
@@ -18,7 +19,7 @@ public class ControladorUsuario {
     private String numero_temporal = ""; 
     private Double resultado; 
     private String opera; 
-    static Usuario u = new Usuario();
+    static Calculadora u = new Calculadora();
     
     
     public String obtenerNumero(String num){
